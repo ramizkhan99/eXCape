@@ -1,6 +1,14 @@
 import cv2
 import numpy as np
+import pynput
+from pynput.mouse import Button, Controller
+import pyautogui
+import time
 
+mouse = Controller()
+h, w = pyautogui.size()
+mouse.position = (h/2, w/2)
+print((h/2, w/2))
 cap = cv2.VideoCapture(0)
 kernel1 = np.ones((2,2),np.uint8)
 kernel2 = np.ones((10,10),np.uint8)
@@ -17,10 +25,16 @@ while(1):
         mid = (eyes[0][0]+eyes[1][0])/2
         if(mid>xref+20):
             print("left")
-        if(mid<xref-20):
+            time.sleep(0.01)
+            mouse.move(-10, 0)
+        elif(mid<xref-20):
             print("right")
+            time.sleep(0.01)
+            mouse.move(10, 0)
         else:
             print("front")
+            time.sleep(0.01)
+            mouse.position = (h/2, w/2)
     except:
         continue
     height, width = frame.shape[:2]
