@@ -6,11 +6,7 @@ kernel1 = np.ones((2,2),np.uint8)
 kernel2 = np.ones((10,10),np.uint8)
 kernel3 = np.ones((5,5),np.uint8)
 watch=cv2.CascadeClassifier('haarcascade_eye.xml')
-for i in range(1):
-    ret, img = cap.read()
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    eyes = watch.detectMultiScale(gray,1.3,5)
-    xref=(eyes[0][0]+eyes[1][0])/2
+xref = 300;
 
 while(1):
     _, frame = cap.read()
