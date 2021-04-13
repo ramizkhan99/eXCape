@@ -1,4 +1,4 @@
-import cv2
+from cv2 import cv2
 import numpy as np
 import pynput
 from pynput.mouse import Button, Controller
@@ -14,7 +14,7 @@ kernel1 = np.ones((2,2),np.uint8)
 kernel2 = np.ones((10,10),np.uint8)
 kernel3 = np.ones((5,5),np.uint8)
 watch=cv2.CascadeClassifier('haarcascade_eye.xml')
-xref = 300;
+xref = 300
 
 while(1):
     _, frame = cap.read()
